@@ -8,6 +8,8 @@ import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import vn.edu.usth.weather.ForecastFragment;
+
 public class WeatherActivity extends AppCompatActivity {
 
     @Override
@@ -15,6 +17,9 @@ public class WeatherActivity extends AppCompatActivity {
         Log.i("USTH Weather", "on create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportFragmentManager().beginTransaction().add(
+            R.id.container, new ForecastFragment()).commit();
     }
 
     @Override
