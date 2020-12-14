@@ -3,23 +3,21 @@ package vn.edu.usth.weather;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import vn.edu.usth.weather.ForecastFragment;
 
 public class WeatherActivity extends AppCompatActivity {
+    public WeatherActivity() { super(R.layout.activity_weather); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("USTH Weather", "on create");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        getSupportFragmentManager().beginTransaction().add(
-            R.id.container, new ForecastFragment()).commit();
+        if (savedInstanceState == null)
+            getSupportFragmentManager().beginTransaction().add(
+                R.id.container, ForecastFragment.class, null).commit();
     }
 
     @Override
