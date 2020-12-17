@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Thời tiết USTH</string>
+    <string name="mon">Thứ hai</string>
+    <string name="tue">Thứ ba</string>
+    <string name="wed">Thứ tư</string>
+    <string name="thu">Thứ năm</string>
+    <string name="fri">Thứ sáu</string>
+    <string name="sat">Thứ bảy</string>
+    <string name="sun">Chủ nhật</string>
+    <string name="few_clouds">Ít mây\n24C - 31C</string>
+    <string name="showers">Mưa rào\n24C - 30C</string>
+    <string name="showers_scattered">Mưa phùn\n22C - 27C</string>
+    <string name="clouds">Nhiều mây\n22C - 30C</string>
+    <string name="storm">Bão\n25C - 28C</string>
+    <string name="pari">Pa ri</string>
+    <string name="hanoi">HÀ NỘI, VIỆT NAM</string>
+    <string name="paris">PA RI, PHÁP</string>
+    <string name="toulouse">TU LU DƠ, PHÁP</string>
+</resources>

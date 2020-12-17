@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">USTH Weather</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="few_clouds">Partly Cloudy\n24C - 31C</string>
+    <string name="showers">Showers\n24C - 30C</string>
+    <string name="showers_scattered">Scattered Showers\n22C - 27C</string>
+    <string name="clouds">Mostly Cloudy\n22C - 30C</string>
+    <string name="storm">Thunderstorms\n25C - 28C</string>
+    <string name="pari">Paris</string>
+    <string name="hanoi">HANOI, VIETNAM</string>
+    <string name="paris">PARIS, FRANCE</string>
+    <string name="toulouse">TOULOUSE, FRANCE</string>
 </resources>
