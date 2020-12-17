@@ -1,15 +1,19 @@
 package vn.edu.usth.weather;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import vn.edu.usth.weather.WeatherPagerAdapter;
 
 public class WeatherActivity extends FragmentActivity {
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
+    public static final String[] city = {
+        "HANOI, VIETNAM", "PARIS, FRANCE", "TOULOUSE, FRANCE"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,10 @@ public class WeatherActivity extends FragmentActivity {
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new WeatherPagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
+        new TabLayoutMediator(
+            findViewById(R.id.tab_layout),
+            viewPager,
+            (tab, position) -> tab.setText(city[position])).attach();
     }
 
     @Override
