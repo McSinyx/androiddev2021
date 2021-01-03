@@ -2,6 +2,7 @@ package vn.edu.usth.weather;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -60,6 +61,12 @@ public class WeatherActivity extends FragmentActivity {
             findViewById(R.id.tab_layout),
             viewPager,
             (tab, position) -> tab.setText(getString(city[position]))).attach();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MediaPlayer.create(this, R.raw.techno).start();
     }
 
     @Override
