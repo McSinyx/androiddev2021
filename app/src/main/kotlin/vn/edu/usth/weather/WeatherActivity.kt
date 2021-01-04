@@ -1,5 +1,8 @@
 package vn.edu.usth.weather
 
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toolbar
 
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
@@ -29,9 +33,12 @@ class WeatherActivity() : FragmentActivity(R.layout.activity_weather) {
                 override fun onMenuItemClick(item: MenuItem): Boolean {
                     return when (item.getItemId()) {
                         R.id.action_refresh -> {
-                            Snackbar.make(
-                                findViewById(R.id.pager), "Refreshing",
-                                Snackbar.LENGTH_SHORT).show()
+                            lifecycleScope.launch {
+                                delay(3000);
+                                Snackbar.make(
+                                    findViewById(R.id.pager), "Refreshing",
+                                    Snackbar.LENGTH_SHORT).show()
+                            }
                             true
                         }
                         R.id.action_pref -> {
@@ -43,7 +50,8 @@ class WeatherActivity() : FragmentActivity(R.layout.activity_weather) {
                         else -> false
                     }
                 }
-            })
+            }
+        )
 
         val viewPager: ViewPager2 = findViewById(R.id.pager)
         viewPager.setAdapter(WeatherPagerAdapter(this))
