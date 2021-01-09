@@ -15,15 +15,14 @@ class PreferencesActivity : FragmentActivity(R.layout.activity_preferences) {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener(
-            object : Toolbar.OnMenuItemClickListener {
-                override fun onMenuItemClick(item: MenuItem): Boolean {
-                    if (item.getItemId() == R.id.action_refresh) {
-                        Snackbar.make(
-                            findViewById(R.id.pref), "Refreshing",
-                            Snackbar.LENGTH_SHORT).show()
-                        return true
-                    }
-                    return false
+            Toolbar.OnMenuItemClickListener { item: MenuItem ->
+                if (item.getItemId() == R.id.action_refresh) {
+                    Snackbar.make(
+                        findViewById(R.id.pref), "Refreshing",
+                        Snackbar.LENGTH_SHORT).show()
+                    true
+                } else {
+                    false
                 }
             }
         )

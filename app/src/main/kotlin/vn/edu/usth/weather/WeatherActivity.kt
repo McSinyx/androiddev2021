@@ -15,6 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 import vn.edu.usth.weather.PreferencesActivity
@@ -29,35 +30,34 @@ class WeatherActivity() : FragmentActivity(R.layout.activity_weather) {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         toolbar.inflateMenu(R.menu.menu_main)
         toolbar.setOnMenuItemClickListener(
-            object : Toolbar.OnMenuItemClickListener {
-                override fun onMenuItemClick(item: MenuItem): Boolean {
-                    return when (item.getItemId()) {
-                        R.id.action_refresh -> {
-                            lifecycleScope.launch {
-                                delay(3000);
-                                Snackbar.make(
-                                    findViewById(R.id.pager), "Refreshing",
-                                    Snackbar.LENGTH_SHORT).show()
-                            }
-                            true
+            Toolbar.OnMenuItemClickListener { item: MenuItem ->
+                when (item.getItemId()) {
+                    R.id.action_refresh -> {
+                        lifecycleScope.launch {
+                            delay(3000);
+                            Snackbar.make(
+                                findViewById(R.id.pager), "Refreshing",
+                                Snackbar.LENGTH_SHORT).show()
                         }
-                        R.id.action_pref -> {
-                            this@WeatherActivity.startActivity(Intent(
-                                this@WeatherActivity,
-                                PreferencesActivity::class.java))
-                            true
-                        }
-                        else -> false
+                        true
                     }
+                    R.id.action_pref -> {
+                        this@WeatherActivity.startActivity(Intent(
+                            this@WeatherActivity,
+                            PreferencesActivity::class.java))
+                        true
+                    }
+                    else -> false
                 }
             }
         )
 
         val viewPager: ViewPager2 = findViewById(R.id.pager)
         viewPager.setAdapter(WeatherPagerAdapter(this))
-        TabLayoutMediator(
-            findViewById(R.id.tab_layout), viewPager,
-            { tab, position -> tab.setText(getString(city[position]))}).attach()
+        val tabLayout = findViewById(R.id.tab_layout) as TabLayout
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.setText(getString(city[position]))
+        }.attach()
     }
 
     override fun onBackPressed() {
