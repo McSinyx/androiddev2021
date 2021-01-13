@@ -1,26 +1,28 @@
 package vn.edu.usth.weather
 
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toolbar
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
+import coil.load
+
 import vn.edu.usth.weather.PreferencesActivity
 import vn.edu.usth.weather.WeatherPagerAdapter
 
+const val USTH = "https://ipfs.io/ipfs/QmQ8mYzbXxzZKaLKH35kPoCnLsSth5Nb43yJwfaTGJkNKP?filename=usth.png"
 val city = arrayOf(R.string.hanoi, R.string.paris, R.string.toulouse)
 
 class WeatherActivity() : FragmentActivity(R.layout.activity_weather) {
@@ -34,7 +36,7 @@ class WeatherActivity() : FragmentActivity(R.layout.activity_weather) {
                 when (item.getItemId()) {
                     R.id.action_refresh -> {
                         lifecycleScope.launch {
-                            delay(3000);
+                            findViewById<ImageView>(R.id.usth).load(USTH)
                             Snackbar.make(
                                 findViewById(R.id.pager), "Refreshing",
                                 Snackbar.LENGTH_SHORT).show()
